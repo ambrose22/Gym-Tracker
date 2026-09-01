@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git commit -m 'Phase 1: Vite + React PWA scaffold with offline support *)",
+      "Bash(git commit -m 'Phase 2: Vercel serverless coach proxy *)"
+    ]
+  }
+}

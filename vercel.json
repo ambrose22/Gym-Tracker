@@ -1,0 +1,6 @@
+{
+  "rewrites": [
+    { "source": "/api/coach", "destination": "/api/coach" },
+    { "source": "/((?!api/).*)", "destination": "/index.html" }
+  ]
+}
