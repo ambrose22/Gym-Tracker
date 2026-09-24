@@ -1,0 +1,842 @@
+{
+  "logs": {
+    "1-d1": {
+      "weight": "50",
+      "reps": [
+        8,
+        8,
+        12
+      ],
+      "rir": 1,
+      "note": "CG bench. Tough at the end of the last set."
+    },
+    "1-d2": {
+      "weight": "25",
+      "reps": [
+        10,
+        10,
+        10
+      ],
+      "rir": 2,
+      "note": "Felt good"
+    },
+    "1-d3": {
+      "weight": "10 /hand",
+      "reps": [
+        14,
+        14,
+        14
+      ],
+      "rir": 2,
+      "note": "About right — nudge up to 12.5"
+    },
+    "1-d4": {
+      "weight": "40",
+      "reps": [
+        10,
+        10,
+        10
+      ],
+      "rir": 2,
+      "note": "45 was too much on set 1, dropped to 40"
+    },
+    "1-d5": {
+      "weight": "12.5 /hand",
+      "reps": [
+        10,
+        10
+      ],
+      "rir": 2,
+      "note": "Cable unavailable — did seated incline DB curls"
+    },
+    "1-d6": {
+      "weight": "17.5",
+      "reps": [
+        12,
+        12
+      ],
+      "rir": 0,
+      "note": "Right on the limit"
+    },
+    "1-a1": {
+      "weight": "95",
+      "reps": [
+        8,
+        8,
+        8
+      ],
+      "rir": 2,
+      "note": "Did a warm up at 80kg"
+    },
+    "1-a2": {
+      "weight": "60",
+      "reps": [
+        8,
+        8,
+        8
+      ],
+      "rir": 0,
+      "note": "Empty bar warm up x10"
+    },
+    "1-a3": {
+      "weight": "50",
+      "reps": [
+        10,
+        10,
+        10
+      ],
+      "rir": 0,
+      "note": "Did barbell bent over row instead "
+    },
+    "1-a5": {
+      "weight": "45",
+      "reps": [
+        12,
+        12
+      ],
+      "rir": 2,
+      "note": ""
+    },
+    "1-a6": {
+      "weight": "12.5",
+      "reps": [
+        12,
+        12
+      ],
+      "rir": 0,
+      "note": ""
+    },
+    "1-c2": {
+      "weight": "40.5",
+      "reps": [
+        12,
+        12,
+        12
+      ],
+      "rir": 2,
+      "note": "This felt perfect,  had a bit in reserve but happy with it"
+    },
+    "1-c1": {
+      "weight": "17.5",
+      "reps": [
+        12,
+        12,
+        12
+      ],
+      "rir": 4,
+      "note": "Felt I could have pushed it a bit more.  Not sure if this matters but I think for an exercise like this I would prefer hitting that 5-8 rep range with a higher weight"
+    },
+    "1-c4": {
+      "weight": "15",
+      "reps": [
+        12,
+        12,
+        12
+      ],
+      "rir": 4,
+      "note": "Similar to the incline press, feel I would prefer to do less reps but a heavier weight for this type of exercise "
+    },
+    "1-c3": {
+      "weight": "..",
+      "reps": [
+        12,
+        12,
+        12
+      ],
+      "rir": 2,
+      "note": "Did swiss ball leg curls instead"
+    },
+    "1-c5": {
+      "weight": "45",
+      "reps": [
+        12,
+        12
+      ],
+      "rir": 2,
+      "note": "1st set was 40kg, second 45kg and felt I could have pushed harder "
+    },
+    "1-c6": {
+      "weight": "35",
+      "reps": [
+        12,
+        12
+      ],
+      "rir": 4,
+      "note": "Could have gone a bit harder "
+    },
+    "1-b1": {
+      "weight": "20",
+      "reps": [
+        10,
+        10,
+        10
+      ],
+      "rir": 2,
+      "note": "Did this as DB Romanian Deadlift instead as didn't have machine "
+    },
+    "1-b2": {
+      "weight": "40",
+      "reps": [
+        10,
+        8,
+        6
+      ],
+      "rir": 0,
+      "note": "Became really tough on the later sets under fatigue"
+    },
+    "1-b3": {
+      "weight": "45",
+      "reps": [
+        12,
+        12,
+        12
+      ],
+      "rir": 1,
+      "note": "Machine jumps from 45kg to 55kg, so went with 45 and pushed to the rep limit "
+    },
+    "1-b4": {
+      "weight": "15",
+      "reps": [
+        10,
+        8,
+        8
+      ],
+      "rir": 0,
+      "note": "Hate it. Just hate it"
+    },
+    "1-b5": {
+      "weight": "6",
+      "reps": [
+        12,
+        15
+      ],
+      "rir": 0,
+      "note": "All good "
+    },
+    "1-b6": {
+      "weight": "12.5",
+      "reps": [
+        8,
+        10
+      ],
+      "rir": 0,
+      "note": "Got a bit sore in my left elbow doing this.. maybe a technique thing?"
+    },
+    "2-a1": {
+      "weight": "90",
+      "reps": [
+        5,
+        5,
+        5
+      ],
+      "rir": 2,
+      "note": "Felt good, 5 reps is about right for conventional deadlift"
+    },
+    "2-a2": {
+      "weight": "60",
+      "reps": [
+        8,
+        8,
+        8
+      ],
+      "rir": 1,
+      "note": ""
+    },
+    "2-a3": {
+      "weight": "50",
+      "reps": [
+        10,
+        10,
+        10
+      ],
+      "rir": 2,
+      "note": "Did it as barbell again"
+    },
+    "2-a5": {
+      "weight": "45",
+      "reps": [
+        10,
+        12
+      ],
+      "rir": 2,
+      "note": "All good - felt right "
+    },
+    "2-a6": {
+      "weight": "12.5",
+      "reps": [
+        12,
+        12
+      ],
+      "rir": 2,
+      "note": ""
+    },
+    "2-a4": {
+      "weight": "7.5",
+      "reps": [
+        12,
+        12,
+        12
+      ],
+      "rir": 2,
+      "note": ""
+    },
+    "2-c1": {
+      "weight": "17.5",
+      "reps": [
+        12,
+        12,
+        20
+      ],
+      "rir": 0,
+      "note": "Did AMRAP for final set to get more pump.. would prefer doing a higher weight at 5-8 reps or so for this exercise "
+    },
+    "2-c2": {
+      "weight": "40.5",
+      "reps": [
+        12,
+        12,
+        12
+      ],
+      "rir": 3,
+      "note": "Decent again, could maybe push the weight a bit"
+    },
+    "2-c3": {
+      "weight": "",
+      "reps": [
+        12,
+        12,
+        12
+      ],
+      "rir": 2,
+      "note": "Did as Swiss ball"
+    },
+    "2-c4": {
+      "weight": "15",
+      "reps": [
+        12,
+        12,
+        12
+      ],
+      "rir": 2,
+      "note": "Pretty good, think higher weight at 6 reps might feel better "
+    },
+    "2-c5": {
+      "weight": "50",
+      "reps": [
+        12,
+        12
+      ],
+      "rir": 1,
+      "note": ""
+    },
+    "2-c6": {
+      "weight": "40",
+      "reps": [
+        12,
+        12
+      ],
+      "rir": 4,
+      "note": "Did 35kg for first set and 40kg for second. was pretty easy at both"
+    },
+    "3-a2": {
+      "weight": "60",
+      "reps": [
+        8,
+        8,
+        8
+      ],
+      "rir": 1,
+      "note": ""
+    },
+    "3-a1": {
+      "weight": "95",
+      "reps": [
+        8,
+        8,
+        8
+      ],
+      "rir": 2,
+      "note": ""
+    },
+    "3-a3": {
+      "weight": "50",
+      "reps": [
+        10,
+        10,
+        10
+      ],
+      "rir": 3,
+      "note": "Doing as barbell bent over row"
+    },
+    "3-a4": {
+      "weight": "8",
+      "reps": [
+        12,
+        12,
+        12
+      ],
+      "rir": 1,
+      "note": ""
+    },
+    "3-a5": {
+      "weight": "50",
+      "reps": [
+        12,
+        12
+      ],
+      "rir": 2,
+      "note": ""
+    },
+    "3-a6": {
+      "weight": "12",
+      "reps": [
+        12,
+        12
+      ],
+      "rir": 1,
+      "note": ""
+    },
+    "3-d1": {
+      "weight": "50",
+      "reps": [
+        10,
+        10,
+        10
+      ],
+      "rir": 2,
+      "note": "Did it as close grip bench "
+    },
+    "3-d2": {
+      "weight": "25",
+      "reps": [
+        12,
+        12,
+        12
+      ],
+      "rir": 2,
+      "note": "All good "
+    },
+    "3-d4": {
+      "weight": "40",
+      "reps": [
+        10,
+        10,
+        10
+      ],
+      "rir": 2,
+      "note": "Felt good, might be able to push it a bit"
+    },
+    "3-d3": {
+      "weight": "12.5",
+      "reps": [
+        15,
+        15,
+        15
+      ],
+      "rir": 2,
+      "note": ""
+    },
+    "3-d5": {
+      "weight": "12.5",
+      "reps": [
+        10,
+        2
+      ],
+      "rir": null,
+      "note": ""
+    },
+    "3-d6": {
+      "weight": "20",
+      "reps": [
+        10,
+        10
+      ],
+      "rir": 2,
+      "note": ""
+    },
+    "3-b2": {
+      "weight": "40",
+      "reps": [
+        10,
+        10,
+        8
+      ],
+      "rir": 0,
+      "note": "Couldn't complete 10 at the end there"
+    },
+    "3-b1": {
+      "weight": "20",
+      "reps": [
+        10,
+        10,
+        10
+      ],
+      "rir": 2,
+      "note": "Did it as Romanian db"
+    },
+    "3-b3": {
+      "weight": "55",
+      "reps": [
+        8,
+        8,
+        10
+      ],
+      "rir": null,
+      "note": "Pushed the weight up a bit.. did a couple less reps. Unfortunately there isn't a 50kg option"
+    },
+    "3-b5": {
+      "weight": "7.5",
+      "reps": [
+        12,
+        12
+      ],
+      "rir": 2,
+      "note": "Not sure my form was good, need to watch a YouTube vid on this"
+    },
+    "3-b6": {
+      "weight": "12.5",
+      "reps": [
+        10,
+        10
+      ],
+      "rir": null,
+      "note": "10 per arm pretty challenging!"
+    },
+    "4-a1": {
+      "weight": "90",
+      "reps": [
+        5,
+        6
+      ],
+      "rir": 2,
+      "note": "Did as conventional, so slightly less weight/reps than trap bar."
+    },
+    "4-a2": {
+      "weight": "60",
+      "reps": [
+        8,
+        8
+      ],
+      "rir": 2,
+      "note": "All good - think weight could go up a little "
+    },
+    "4-a3": {
+      "weight": "50",
+      "reps": [
+        10,
+        10
+      ],
+      "rir": 2,
+      "note": "Did this as barbell bent over row"
+    },
+    "4-a4": {
+      "weight": "8",
+      "reps": [
+        15,
+        14
+      ],
+      "rir": 1,
+      "note": "Tough, did as a superset with the barbell rows "
+    },
+    "4-a6": {
+      "weight": "12.5",
+      "reps": [
+        12
+      ],
+      "rir": 2,
+      "note": "Nice"
+    },
+    "4-a5": {
+      "weight": "50",
+      "reps": [
+        12
+      ],
+      "rir": null,
+      "note": "All good"
+    },
+    "4-b2": {
+      "weight": "40",
+      "reps": [
+        10,
+        10
+      ],
+      "rir": 0,
+      "note": "It's pretty tough at 40kg but can do it.. wouldn't mind hoping the weight with lower reps next block"
+    },
+    "4-b1": {
+      "weight": "20",
+      "reps": [
+        10,
+        10
+      ],
+      "rir": 3,
+      "note": "Did as db Romanians, could up weight "
+    },
+    "4-b3": {
+      "weight": "55",
+      "reps": [
+        10,
+        10
+      ],
+      "rir": 2,
+      "note": "Good good exercise."
+    },
+    "4-b4": {
+      "weight": "15",
+      "reps": [
+        8,
+        8
+      ],
+      "rir": 2,
+      "note": "I know it's important but my word I hate it. "
+    },
+    "4-b6": {
+      "weight": "12.5",
+      "reps": [
+        10
+      ],
+      "rir": null,
+      "note": ""
+    },
+    "4-b5": {
+      "weight": "7.5",
+      "reps": [
+        15
+      ],
+      "rir": 2,
+      "note": ""
+    }
+  },
+  "sessionNotes": {
+    "1-D": {
+      "feel": null,
+      "note": ""
+    },
+    "1-A": {
+      "feel": "strong",
+      "note": "Ran out of time for the hanging knee raise and lateral raise"
+    },
+    "1-C": {
+      "feel": "strong",
+      "note": "Good sesh, could have pushed harder I think.  \nOne thing that was a bit annoying was a couple of the supersets meant moving from one side of the gym to the other.. not too bad as it wasn't busy but can see it causing an issue with holding the equipment."
+    },
+    "1-B": {
+      "feel": "great",
+      "note": "Over all nice and challenging.. hated the split squats just absolutely hate that exercise .\nFeeling nice and worked out. Off to the sauna now"
+    },
+    "2-C": {
+      "feel": "strong",
+      "note": "Session felt good.  Felt I could have done more weight across the board, feeling strong . Some adjustments to reps and weights might improve it "
+    },
+    "3-A": {
+      "feel": "strong",
+      "note": ""
+    },
+    "3-B": {
+      "feel": "great",
+      "note": "Good session and felt good after - but didn't get to do split squat"
+    },
+    "4-A": {
+      "feel": null,
+      "note": "Couldn't do hanging knee raise, probably need to swap this out - it's always busy. \nSession was good , pumped it out on 30 mins.. good sweat on and decent feel after "
+    },
+    "4-B": {
+      "feel": null,
+      "note": "Good session, feel like could do 2 sets even on deload week, just the 1 is a bit too little but open to advice "
+    }
+  },
+  "chat": [
+    {
+      "role": "user",
+      "content": "The gym I'm going to doesn't have a machine for back extensions, swap that for something"
+    },
+    {
+      "role": "assistant",
+      "content": "Do Romanian Deadlifts with DBs instead — 3×10–12 @ 20kg/hand, same RIR 2 target. Hits the same posterior chain (glutes, hamstrings, spinal erectors) and fits the session's loading pattern. Progress the same way: hit 12 reps all sets → move to 22.5kg/hand."
+    },
+    {
+      "role": "user",
+      "content": "Suggestion on weight for cable row?"
+    },
+    {
+      "role": "assistant",
+      "content": "You hit Cable Triceps Pushdown at 45kg for 12s with good RIR in W1, but cable stacks vary by gym. Start Session C Seated Cable Row at **40kg** — if that feels easy after set 1 (more than 3 RIR), nudge to 45kg. Target is 10–12 reps at 2 RIR."
+    },
+    {
+      "role": "user",
+      "content": "Don't have a seated leg curl machine in this gym. What should I do instead?"
+    },
+    {
+      "role": "assistant",
+      "content": "Do **Nordic Hamstring Curls** (BW) or **DB Lying Hamstring Curls** (lie face down on a bench, grip a DB between your feet) — both hit the hamstring curl pattern well. If neither works, **Swiss ball leg curls** are a decent fallback. Same sets/reps: 3×12 at 2 RIR."
+    },
+    {
+      "role": "user",
+      "content": "Explain swiss ball leg curl"
+    },
+    {
+      "role": "assistant",
+      "content": "Lie on your back, heels on top of the swiss ball, hips lifted in a bridge position. Curl the ball toward your glutes by bending your knees, then slowly roll it back out. Keep your hips up throughout — the moment they sag, the hamstrings disengage. 3×12 at 2 RIR, it'll feel harder than it looks."
+    },
+    {
+      "role": "user",
+      "content": "What weight should I start for the cable crunch?"
+    },
+    {
+      "role": "assistant",
+      "content": "Start at **25–30kg** and do a quick test set of 5 reps — you want to feel real tension in your abs, not your hip flexors. Adjust from there so 12–15 reps leaves you with 2 RIR. Err lighter first; form matters more than load on this one."
+    },
+    {
+      "role": "user",
+      "content": "There is no back extensions machine at the gym, what should I use instead?"
+    },
+    {
+      "role": "assistant",
+      "content": "Same answer as earlier — **DB Romanian Deadlifts** are your best swap. 3×10–12 @ 20kg/hand, 2 RIR. Progresses the same way: hit 12 all sets → move to 22.5kg/hand next session."
+    },
+    {
+      "role": "user",
+      "content": "What's the benefit of dumbbells over bar?"
+    },
+    {
+      "role": "assistant",
+      "content": "Two main reasons: each side works independently so you can't compensate with a stronger side, and the neutral grip is easier on the wrists and lower back. For a hypertrophy block DB RDLs also give a slightly better stretch at the bottom which is where a lot of the hamstring growth stimulus comes from."
+    },
+    {
+      "role": "user",
+      "content": "Is barbell overhead press a push press or a strict press?"
+    },
+    {
+      "role": "assistant",
+      "content": "Strict press for this programme — no leg drive. Control the bar down to upper chest, press straight up. Keeps the shoulders and triceps doing all the work, which is the point in a hypertrophy block."
+    },
+    {
+      "role": "user",
+      "content": "Explain underhand lat pulldown"
+    },
+    {
+      "role": "assistant",
+      "content": "Hands gripping the bar with palms facing you (supinated), roughly shoulder-width apart. Pull the bar down to upper chest, elbows drive down and back toward your hips. The underhand grip brings your biceps more into play and lets most people feel a stronger lat contraction than overhand — keep your chest tall and avoid leaning back excessively."
+    },
+    {
+      "role": "user",
+      "content": "What does FFE mean on split squats?"
+    },
+    {
+      "role": "assistant",
+      "content": "Front Foot Elevated — your front foot is up on a small plate or step (2-5cm), back foot on the floor. It increases the range of motion at the bottom, giving a deeper stretch through the front leg's glute and quad compared to a standard split squat."
+    },
+    {
+      "role": "user",
+      "content": "Hamstring are quite sore today after RDLs yesterday. Should I be stretching a bit more?"
+    },
+    {
+      "role": "assistant",
+      "content": "Some soreness after RDLs is normal, especially if it's a new movement. Stretching won't hurt but it won't speed up recovery much — light movement is more effective. Today's session (C) is mostly upper body so your hamstrings get a rest anyway. If the soreness is still bad by Friday's Session D, let me know and we can adjust."
+    },
+    {
+      "role": "user",
+      "content": "How should I warm up for Session A in Week 2?"
+    },
+    {
+      "role": "assistant",
+      "content": "Keep it simple:\n\n- **Trap Bar Deadlift:** 1 set @ 60kg × 5, 1 set @ 80kg × 3, then straight into working sets at 95kg\n- **Bench Press:** empty bar × 10, then 1 set @ 45kg × 5, straight into 60kg working sets\n- No warm-up needed for the accessory work — you'll be warm by then."
+    },
+    {
+      "role": "user",
+      "content": "Week 2 is conventional not Trap Bar deadlift right?"
+    },
+    {
+      "role": "assistant",
+      "content": "No — the programme has Trap Bar Deadlift throughout the block. There's no conventional deadlift in this programme. Warm up the same way: 60kg × 5, 80kg × 3, then 95kg working sets."
+    },
+    {
+      "role": "user",
+      "content": "I'm looking at it right now - I'm looking at Week 2, and it says Conventional Deadlift"
+    },
+    {
+      "role": "assistant",
+      "content": "I can only see what's in your programme as I have it — and that shows Trap Bar Deadlift for Session A. If your app is showing Conventional Deadlift for Week 2, that's a discrepancy I can't explain from my end. Follow what your app says and warm up the same way: 60kg × 5, 80kg × 3, then into your working sets."
+    },
+    {
+      "role": "user",
+      "content": "Swap an exercise for me"
+    },
+    {
+      "role": "assistant",
+      "content": "Which exercise and what's the reason — no equipment, discomfort, or something else?"
+    },
+    {
+      "role": "user",
+      "content": "Leg curl"
+    },
+    {
+      "role": "assistant",
+      "content": "Already covered this one — **Swiss ball leg curls** or **DB lying hamstring curls** are your best options. Which one works for you and I'll lock it in for the programme."
+    },
+    {
+      "role": "user",
+      "content": "Swiss vall works better. Explain how it works again"
+    },
+    {
+      "role": "assistant",
+      "content": "Lie on your back, heels on top of the swiss ball, hips lifted in a bridge position. Curl the ball toward your glutes by bending your knees, then slowly roll it back out. Keep your hips up throughout — the moment they sag, the hamstrings disengage. 3×12 at 2 RIR."
+    },
+    {
+      "role": "user",
+      "content": "No trap bad today what should replace?"
+    },
+    {
+      "role": "assistant",
+      "content": "**Conventional Deadlift** is the closest swap — same pattern, similar loading. Start at 90kg (slightly less than trap bar as it's more demanding on the lower back and hamstrings). Same sets/reps: 3×8 at 2 RIR."
+    },
+    {
+      "role": "user",
+      "content": "Thanks and give warm up for both bench and dead please"
+    },
+    {
+      "role": "assistant",
+      "content": "**Deadlift (90kg working):**\n- 60kg × 5\n- 75kg × 3\n- Into working sets\n\n**Bench (60kg working):**\n- Empty bar × 10\n- 45kg × 5\n- Into working sets"
+    },
+    {
+      "role": "user",
+      "content": "What is a good replacement for seated leg curl"
+    },
+    {
+      "role": "assistant",
+      "content": "Already swapped this to **Swiss ball leg curls** for you — 3×12 at 2 RIR. Same execution as explained earlier: on your back, heels on the ball, hips bridged up, curl toward your glutes."
+    },
+    {
+      "role": "user",
+      "content": "I'm on week 4 now. Why is it less sets? What is the benefit?"
+    },
+    {
+      "role": "assistant",
+      "content": "Week 4 is a deload — dropping one set per exercise reduces total volume and lets your body recover and consolidate the adaptations from the previous 3 weeks. Fatigue masks fitness, so you'll often feel stronger after a deload than before it. Same weights as Week 3, just one set fewer. Block 2 then starts fresh from those Week 4 weights."
+    },
+    {
+      "role": "user",
+      "content": "For some reason my gym doesn't allow us to do vable crunch. What can replace?"
+    },
+    {
+      "role": "assistant",
+      "content": "**Hanging Knee Raises** or **Ab Wheel Rollouts** are your best swaps — both hit the same trunk flexion pattern. If those aren't available, **decline sit-ups** work too. Same sets/reps: 2×12–15 at 2 RIR."
+    },
+    {
+      "role": "user",
+      "content": "Can I do Session B with the first 2 then the next 2 as super sets?"
+    },
+    {
+      "role": "assistant",
+      "content": "Couldn't reach the coach (Failed to fetch). The backend isn't deployed yet — this will work after Phase 2."
+    },
+    {
+      "role": "user",
+      "content": "Try again"
+    },
+    {
+      "role": "assistant",
+      "content": "Yes that works fine. So:\n\n- **RDLs** then **Overhead Press** as straight sets\n- **Lat Pulldown + Split Squat** as SS1\n- **Reverse Fly + Hammer Curl** as SS2\n\nKeeps the session efficient and the pairings make sense — upper/lower split on the supersets means minimal interference between exercises."
+    }
+  ]
+}
