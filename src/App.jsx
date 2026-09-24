@@ -2,69 +2,66 @@ import React, { useState, useEffect, useRef, useCallback } from "react";
 import storage from "./storage.js";
 
 /* ------------------------------------------------------------------ */
-/* PROGRAMME DATA — Hypertrophy Block 1 (4 weeks)                      */
+/* PROGRAMME DATA — Hypertrophy Block 2 (4 weeks)                      */
 /* ------------------------------------------------------------------ */
 
 const SS_COLORS = {
-  ss1: "#FF6B6B", // red 25 plate
-  ss2: "#4D96FF", // blue 20 plate
-  ss3: "#FFD93D", // yellow 15 plate
-  ss0: "#8B97A5", // straight sets
+  ss1: "#FF6B6B",
+  ss2: "#4D96FF",
+  ss3: "#FFD93D",
+  ss0: "#8B97A5",
 };
 
-// Base session templates. sets = [W1, W2, W3, W4(deload)]
 const SESSIONS = {
   A: {
     name: "Session A",
-    focus: "Deadlift + bench",
+    focus: "Hinge + Bench",
     time: "45–60 min",
     exercises: [
-      { id: "a1", nameByWeek: ["Trap Bar Deadlift", "Conventional Deadlift", "Trap Bar Deadlift", "Conventional Deadlift"], sets: [3, 3, 3, 2], target: "8", startByWeek: ["95", "90", "95", "90"], ss: "ss0", note: "Hinge alternates weekly" },
-      { id: "a2", name: "Barbell Bench Press", sets: [3, 3, 3, 2], target: "8–10", start: "60", ss: "ss0", note: "In rack, safeties just below chest. No AMRAP." },
-      { id: "a3", name: "Chest-Supported / Incline DB Row", sets: [3, 3, 3, 2], target: "10–12", start: "20 /hand", ss: "ss0" },
-      { id: "a4", name: "DB Lateral Raise", sets: [3, 3, 3, 2], target: "12–15", start: "7 /hand", ss: "ss0" },
-      { id: "a5", name: "SS: Cable Triceps Pushdown", sets: [2, 2, 2, 1], target: "12", start: "pick @ 2 RIR", ss: "ss1", note: "Superset with curls, 60s rest" },
-      { id: "a6", name: "SS: DB Bicep Curl", sets: [2, 2, 2, 1], target: "12", start: "12.5 /hand", ss: "ss1" },
-      { id: "a7", name: "Hanging Knee Raise", sets: [3, 3, 3, 2], target: "10–12", start: "BW", ss: "ss0", note: "Finisher. Slow tempo before adding reps." },
+      { id: "a1", nameByWeek: ["Trap Bar Deadlift", "Conventional Deadlift", "Trap Bar Deadlift", "Conventional Deadlift"], targetByWeek: ["8", "5", "8", "5"], startByWeek: ["95", "90", "95", "90"], sets: [3, 3, 3, 3], zone: "Floor", ss: "ss0" },
+      { id: "a2", name: "Barbell Bench Press", target: "8–10", start: "62.5", sets: [3, 3, 3, 3], zone: "Rack", ss: "ss0", note: "In rack, safeties just below chest. No AMRAP." },
+      { id: "a3", name: "Seated Cable Row", target: "10–12", start: "45", sets: [3, 3, 3, 3], zone: "Station", ss: "ss0" },
+      { id: "a4", name: "Incline DB Curl", target: "10–12", start: "12.5 /hand", sets: [3, 3, 3, 3], zone: "Bench", ss: "ss1", note: "Superset with overhead extension, 60s rest" },
+      { id: "a5", name: "Overhead DB Triceps Extension", target: "10–12", start: "17.5", sets: [3, 3, 3, 3], zone: "Bench", ss: "ss1" },
+      { id: "a6", name: "Lying Leg Raise", target: "10–12", start: "BW", sets: [2, 2, 2, 2], zone: "Floor", ss: "ss0", note: "Slow tempo before adding reps", pushOption: { name: "Hanging Knee Raise", target: "10–12", start: "BW", note: "Push-day option — only if the station is free" } },
     ],
   },
   B: {
     name: "Session B",
-    focus: "Back extension + press",
+    focus: "Press + Pull",
     time: "45–60 min",
     exercises: [
-      { id: "b1", name: "Weighted Back Extension", sets: [3, 3, 3, 2], target: "10–12", start: "15–20 DB", ss: "ss0", note: "Glutes + hams, DB held to chest" },
-      { id: "b2", name: "Barbell Overhead Press", sets: [3, 3, 3, 2], target: "8–10", start: "40", ss: "ss0" },
-      { id: "b3", name: "Lat Pulldown (underhand)", sets: [3, 3, 3, 2], target: "8–12", start: "50", ss: "ss0" },
-      { id: "b4", name: "DB Split Squat (FFE)", sets: [3, 3, 3, 2], target: "10 /leg", start: "15 /hand", ss: "ss0" },
-      { id: "b5", name: "SS: Bent Over Reverse Fly", sets: [2, 2, 2, 1], target: "12–15", start: "6 /hand", ss: "ss1", note: "Superset, 60s rest" },
-      { id: "b6", name: "SS: DB Hammer Curl", sets: [2, 2, 2, 1], target: "12–15", start: "12.5 /hand", ss: "ss1" },
+      { id: "b1", nameByWeek: ["Strict Press", "Push Press", "Strict Press", "Push Press"], targetByWeek: ["6–8", "5–6", "6–8", "5–6"], startByWeek: ["40", "45", "40", "45"], sets: [3, 3, 3, 3], zone: "Rack", ss: "ss0", note: "2 RIR — no grinders" },
+      { id: "b2", name: "Lat Pulldown (underhand)", target: "8–12", start: "55", sets: [3, 3, 3, 3], zone: "Station", ss: "ss0", note: "Stack jumps 45→55: add reps before weight" },
+      { id: "b3", name: "DB Romanian Deadlift", target: "10", start: "22.5 /hand", sets: [3, 3, 3, 3], zone: "Bench", ss: "ss0" },
+      { id: "b4", name: "Leg Press", target: "10–12", start: "pick @ 2 RIR", sets: [3, 3, 3, 3], zone: "Leg press", ss: "ss0" },
+      { id: "b5", name: "DB Hammer Curl", target: "10–12", start: "12.5 /hand", sets: [3, 3, 3, 3], zone: "Station", ss: "ss1", note: "If left elbow flares, switch to rope hammer curl" },
+      { id: "b6", name: "Cable Triceps Pushdown", target: "12", start: "50", sets: [3, 3, 3, 3], zone: "Station", ss: "ss1" },
+      { id: "b7", name: "DB Split Squat (FFE)", target: "8 /leg", start: "12.5 /hand", sets: [2, 2, 2, 2], zone: "Bench", ss: "ss0", bonus: true, note: "Only if feeling strong" },
     ],
   },
   C: {
     name: "Session C",
-    focus: "Supersets",
-    time: "30 min",
+    focus: "Chest supersets",
+    time: "30–40 min",
     exercises: [
-      { id: "c1", name: "SS1: Incline DB Press", sets: [3, 3, 3, 2], target: "10–12", start: "17.5 /hand", ss: "ss1" },
-      { id: "c2", name: "SS1: Seated Cable Row", sets: [3, 3, 3, 2], target: "10–12", start: "pick @ 2 RIR", ss: "ss1" },
-      { id: "c3", name: "SS2: Seated Leg Curl", sets: [3, 3, 3, 2], target: "12", start: "30–35", ss: "ss2" },
-      { id: "c4", name: "SS2: DB Seated Shoulder Press", sets: [3, 3, 3, 2], target: "10–12", start: "15 /hand", ss: "ss2" },
-      { id: "c5", name: "Cable Face Pull", sets: [2, 2, 2, 1], target: "15", start: "40", ss: "ss0" },
-      { id: "c6", name: "Cable Crunch (kneeling)", sets: [2, 2, 2, 1], target: "12–15", start: "pick @ 2 RIR", ss: "ss0", note: "Finisher — progressible like any muscle" },
+      { id: "c1", name: "Incline DB Press", target: "5–8", start: "22.5 /hand", sets: [3, 3, 3, 3], zone: "Bench", ss: "ss1" },
+      { id: "c2", name: "Swiss Ball Leg Curl", target: "12", start: "BW", sets: [3, 3, 3, 3], zone: "Bench", ss: "ss1" },
+      { id: "c3", name: "Wide Lat Pulldown", target: "10–12", start: "45", sets: [3, 3, 3, 3], zone: "Station", ss: "ss2" },
+      { id: "c4", name: "Cable Crunch (kneeling)", target: "12–15", start: "40", sets: [2, 2, 2, 2], zone: "Station", ss: "ss2" },
+      { id: "c5", name: "Dips", target: "8–12", start: "BW", sets: [3, 3, 3, 3], zone: "Dip station", ss: "ss0" },
     ],
   },
   D: {
     name: "Session D",
-    focus: "Supersets",
+    focus: "Arms & chest (optional)",
     time: "30 min",
     exercises: [
-      { id: "d1", name: "SS1: Dips / Close-Grip Bench", sets: [3, 3, 3, 2], target: "8–12", start: "BW / 50", ss: "ss1", note: "Dips first choice — no spotter needed" },
-      { id: "d2", name: "SS1: DB Single-Arm Row", sets: [3, 3, 3, 2], target: "10 /arm", start: "25", ss: "ss1" },
-      { id: "d3", name: "SS2: Standing Calf Raise", sets: [3, 3, 3, 2], target: "12–15", start: "12.5 /hand", ss: "ss2" },
-      { id: "d4", name: "SS2: Lat Pulldown (wide)", sets: [3, 3, 3, 2], target: "10–12", start: "40", ss: "ss2" },
-      { id: "d5", name: "SS3: Cable Curl", sets: [2, 2, 2, 1], target: "12–15", start: "12.5 (incline DB ok)", ss: "ss3" },
-      { id: "d6", name: "SS3: DB Overhead Triceps Extension", sets: [2, 2, 2, 1], target: "12–15", start: "17.5", ss: "ss3" },
+      { id: "d1", name: "DB Fly", target: "12–15", start: "pick @ 2 RIR", sets: [3, 3, 3, 3], zone: "Bench", ss: "ss1" },
+      { id: "d2", name: "DB Lateral Raise", target: "12–15", start: "8 /hand", sets: [3, 3, 3, 3], zone: "Bench", ss: "ss1" },
+      { id: "d3", name: "Cable Curl", target: "12–15", start: "pick @ 2 RIR", sets: [3, 3, 3, 3], zone: "Station", ss: "ss2" },
+      { id: "d4", name: "Rope Pushdown", target: "12–15", start: "pick @ 2 RIR", sets: [3, 3, 3, 3], zone: "Station", ss: "ss2" },
+      { id: "d5", name: "Standing Calf Raise", target: "12–15", start: "15 /hand", sets: [3, 3, 3, 3], zone: "Floor", ss: "ss0" },
     ],
   },
   S: {
@@ -78,33 +75,21 @@ const SESSIONS = {
 };
 
 const RULES = [
-  "Every working set ends ~2 reps in reserve. Could've done 5 more? Too light.",
-  "Double progression: top of rep range on ALL sets → +2.5kg upper / +5kg lower next session.",
-  "No AMRAP / grinder sets. No spotter: a rep you're not sure about is a rep you don't take.",
-  "Bench always inside the rack, safeties just below chest height.",
-  "Week 4 = deload: same weights, one set fewer. Block 2 starts at W4 weights.",
-  "Lower-body work is spread across all sessions — no skippable leg day.",
+  "Every working set ends ~2 reps in reserve. No AMRAP, no grinders — no spotter.",
+  "Double progression: top of rep range on ALL sets → +2.5kg upper / +5kg lower next time you do that same lift.",
+  "Rotating lifts (deadlift, overhead press) progress against the last time you did the same variant.",
+  "Bench always inside the rack, safeties just below chest.",
+  "3 sessions a week is the plan: A, B, C. D is optional — drop it first.",
+  "Bonus exercises are optional. Skipping them is fine.",
+  "Week 4 = deload: same sets, ~10% less weight, 3–4 RIR.",
 ];
 
 const SESSION_ORDER = ["A", "B", "C", "D", "S"];
-const DAY_LABEL = { A: "Mon", B: "Wed", C: "Thu", D: "Fri", S: "Wknd" };
-const STORAGE_KEY = "block1_tracker_v1";
+const DAY_LABEL = { A: "Mon", B: "Wed", C: "Thu", D: "Optional", S: "Wknd" };
+const STORAGE_KEY = "block2_tracker_v1";
 const APP_KEY_STORAGE = "block1_app_key";
 
-/* Seed: W1 Session D as logged in the spreadsheet (1 Sep 2026).
-   Reps in [] were stated; the rest completed at target. */
-const SEED = {
-  logs: {
-    "1-d1": { weight: "50", reps: [8, 8, 12], rir: 1, note: "CG bench. Tough at the end of the last set." },
-    "1-d2": { weight: "25", reps: [10, 10, 10], rir: 2, note: "Felt good" },
-    "1-d3": { weight: "10 /hand", reps: [14, 14, 14], rir: 2, note: "About right — nudge up to 12.5" },
-    "1-d4": { weight: "40", reps: [10, 10, 10], rir: 2, note: "45 was too much on set 1, dropped to 40" },
-    "1-d5": { weight: "12.5 /hand", reps: [10, 10], rir: 2, note: "Cable unavailable — did seated incline DB curls" },
-    "1-d6": { weight: "17.5", reps: [12, 12], rir: 0, note: "Right on the limit" },
-  },
-  sessionNotes: { "1-D": { feel: null, note: "" } },
-  chat: [],
-};
+const EMPTY_STATE = { logs: {}, sessionNotes: {}, chat: [], block: 2 };
 
 /* ------------------------------------------------------------------ */
 
@@ -127,6 +112,51 @@ function exName(ex, weekIdx) {
 function exStart(ex, weekIdx) {
   return ex.startByWeek ? ex.startByWeek[weekIdx] : ex.start;
 }
+function exTarget(ex, weekIdx) {
+  return ex.targetByWeek ? ex.targetByWeek[weekIdx] : ex.target;
+}
+
+function effectiveName(ex, weekIdx, option) {
+  if (option === "push" && ex.pushOption) return ex.pushOption.name;
+  return exName(ex, weekIdx);
+}
+function effectiveTarget(ex, weekIdx, option) {
+  if (option === "push" && ex.pushOption) return ex.pushOption.target;
+  return exTarget(ex, weekIdx);
+}
+function effectiveStart(ex, weekIdx, option) {
+  if (option === "push" && ex.pushOption) return ex.pushOption.start;
+  return exStart(ex, weekIdx);
+}
+
+function deloadWeight(raw) {
+  if (!raw) return null;
+  const m = raw.match(/^([\d.]+)(\s*\/hand)?$/);
+  if (!m) return null;
+  const num = parseFloat(m[1]);
+  if (isNaN(num)) return null;
+  const deloaded = Math.round((num * 0.9) / 2.5) * 2.5;
+  return `${deloaded}${m[2] ? " /hand" : ""}`;
+}
+
+function planWeight(ex, weekIdx, logs, week, option) {
+  const start = effectiveStart(ex, weekIdx, option);
+  if (weekIdx !== 3) return { weight: start, isDeload: false };
+
+  const currentName = exName(ex, weekIdx);
+  for (let w = week - 1; w >= 1; w--) {
+    if (ex.nameByWeek && exName(ex, w - 1) !== currentName) continue;
+    const l = logs[`${w}-${ex.id}`];
+    if (!l || !l.weight) continue;
+    if (ex.pushOption && (l.option || "standard") !== (option || "standard")) continue;
+    const dw = deloadWeight(l.weight);
+    if (dw) return { weight: dw, isDeload: true };
+    return { weight: start, isDeload: false };
+  }
+  const dw = deloadWeight(start);
+  if (dw) return { weight: dw, isDeload: true };
+  return { weight: start, isDeload: false };
+}
 
 function buildCoachContext(logs, sessionNotes) {
   const lines = [];
@@ -138,7 +168,11 @@ function buildCoachContext(logs, sessionNotes) {
           const l = logs[`${w}-${ex.id}`];
           if (!l || (!l.weight && !(l.reps || []).some((r) => r != null) && !l.note)) return null;
           const reps = (l.reps || []).map((r) => (r == null ? "–" : r)).join(", ");
-          return `  ${exName(ex, w - 1)} [target ${ex.target} × ${ex.sets[w - 1]} sets, plan ${exStart(ex, w - 1)}]: ${l.weight || "?"}kg, reps [${reps}]${l.rir != null ? `, RIR ${l.rir}` : ""}${l.note ? ` — "${l.note}"` : ""}`;
+          const target = l.option === "push" && ex.pushOption ? ex.pushOption.target : exTarget(ex, w - 1);
+          const displayName = l.option === "push" && ex.pushOption ? ex.pushOption.name : exName(ex, w - 1);
+          const bonusTag = ex.bonus ? " [BONUS]" : "";
+          const optionTag = ex.pushOption && l.option ? ` [${l.option}]` : "";
+          return `  ${displayName}${bonusTag}${optionTag} [target ${target} × ${ex.sets[w - 1]} sets, plan ${exStart(ex, w - 1)}]: ${l.weight || "?"}kg, reps [${reps}]${l.rir != null ? `, RIR ${l.rir}` : ""}${l.note ? ` — "${l.note}"` : ""}`;
         })
         .filter(Boolean);
       const sn = sessionNotes[`${w}-${sk}`];
@@ -153,7 +187,7 @@ function buildCoachContext(logs, sessionNotes) {
 }
 
 /* ------------------------------------------------------------------ */
-/* Coach — posts to /api/coach (backend arrives in Phase 2)            */
+/* Coach — posts to /api/coach                                         */
 /* ------------------------------------------------------------------ */
 
 function getAppKey() {
@@ -167,28 +201,45 @@ function getAppKey() {
 function setAppKey(key) {
   try {
     localStorage.setItem(APP_KEY_STORAGE, key);
-  } catch {
-    // Silently fail — user will be prompted again next time
-  }
+  } catch {}
 }
 
 async function askCoach(history, logs, sessionNotes) {
-  // Check network connectivity first
-  if (!navigator.onLine) {
-    throw new Error("offline");
-  }
-
+  if (!navigator.onLine) throw new Error("offline");
   const appKey = getAppKey();
-  if (!appKey) {
-    throw new Error("no-app-key");
-  }
+  if (!appKey) throw new Error("no-app-key");
 
   const planSummary = SESSION_ORDER.map((sk) => {
     const s = SESSIONS[sk];
-    return `${s.name} (${DAY_LABEL[sk]}, ${s.time}, ${s.focus}): ` + s.exercises.map((ex) => `${exName(ex, 0)} ${ex.sets[0]}×${ex.target} @ ${exStart(ex, 0)}`).join("; ");
+    const exSummaries = s.exercises.map((ex) => {
+      const bonusTag = ex.bonus ? " [BONUS]" : "";
+      if (ex.nameByWeek) {
+        const variants = [];
+        const seen = new Set();
+        for (let w = 0; w < 4; w++) {
+          const vName = ex.nameByWeek[w];
+          if (seen.has(vName)) continue;
+          seen.add(vName);
+          const weeks = ex.nameByWeek.map((n, i) => n === vName ? `W${i + 1}` : null).filter(Boolean).join("/");
+          const target = ex.targetByWeek ? ex.targetByWeek[w] : ex.target;
+          const start = ex.startByWeek ? ex.startByWeek[w] : ex.start;
+          variants.push(`${vName} ${ex.sets[w]}×${target} @${start} (${weeks})`);
+        }
+        return variants.join(" / ") + bonusTag;
+      }
+      let line = `${ex.name} ${ex.sets[0]}×${exTarget(ex, 0)} @${exStart(ex, 0)}${bonusTag}`;
+      if (ex.pushOption) {
+        line += ` [push option: ${ex.pushOption.name} ${ex.pushOption.target} @${ex.pushOption.start}]`;
+      }
+      return line;
+    });
+    const dayNote = sk === "D" ? " (OPTIONAL)" : "";
+    return `${s.name} (${DAY_LABEL[sk]}, ${s.time}, ${s.focus})${dayNote}: ${exSummaries.join("; ")}`;
   }).join("\n");
 
-  const system = `You are the coach inside Michael's gym tracker (Hypertrophy Block 1, 4 weeks, W4 = deload with one set fewer at same weights).
+  const system = `You are the coach inside Michael's gym tracker (Hypertrophy Block 2, 4 weeks. W4 = deload: same sets, ~10% less weight, 3–4 RIR).
+
+Michael's focus this block is arms and chest. Gym has one combined pulldown/cable-row station, so keep supersets in one zone.
 
 PROGRAMME:
 ${planSummary}
@@ -199,7 +250,7 @@ ${RULES.map((r, i) => `${i + 1}. ${r}`).join("\n")}
 MICHAEL'S LOG SO FAR:
 ${buildCoachContext(logs, sessionNotes)}
 
-You are read on a phone mid-workout. Be concise: 2-5 short sentences unless asked for more. Give concrete numbers (kg, reps, sets). Apply double progression and the 2-RIR rule. Never suggest grinder/AMRAP sets — Michael trains without a spotter. If suggesting a substitution, prefer dumbbell/bodyweight options (cable machines vary by gym).`;
+You are read on a phone mid-workout. Be concise: 2-5 short sentences unless asked for more. Give concrete numbers (kg, reps, sets). Apply double progression and the 2-RIR rule. Never suggest grinder/AMRAP sets — Michael trains without a spotter. If suggesting a substitution, prefer dumbbell/bodyweight options (cable machines vary by gym). Bonus exercises are optional — skipping them is expected, not a miss. Session D is optional — drop it first if the week is busy.`;
 
   const messages = [
     { role: "user", content: system + "\n\nAcknowledge silently; respond only to the conversation that follows." },
@@ -209,10 +260,7 @@ You are read on a phone mid-workout. Be concise: 2-5 short sentences unless aske
 
   const res = await fetch("/api/coach", {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "x-app-key": appKey,
-    },
+    headers: { "Content-Type": "application/json", "x-app-key": appKey },
     body: JSON.stringify({ messages }),
   });
 
@@ -247,28 +295,47 @@ function Stepper({ value, onChange, step = 1, min = 0, width = 40 }) {
   );
 }
 
-function ExerciseCard({ ex, weekIdx, log, prev, onLog }) {
+function WarmUpCard() {
+  return (
+    <div style={{ background: C.surface, borderRadius: 12, borderLeft: `4px solid ${C.amber}`, padding: "12px 14px" }}>
+      <div style={{ fontSize: 14, fontWeight: 800, color: C.amber, marginBottom: 4 }}>Warm-up</div>
+      <div style={{ fontSize: 13, color: C.muted, lineHeight: 1.5 }}>
+        5 min easy bike + dynamic mobility (arm circles, hip openers, band pull-aparts). Then 2 warm-up sets on the first main lift: ~50% × 8, ~75% × 4.
+      </div>
+    </div>
+  );
+}
+
+function ExerciseCard({ ex, weekIdx, log, prev, onLog, week, logs }) {
   const [open, setOpen] = useState(false);
   const nSets = ex.sets[weekIdx];
-  const name = exName(ex, weekIdx);
-  const start = exStart(ex, weekIdx);
+  const option = log?.option || "standard";
+  const name = effectiveName(ex, weekIdx, option);
+  const target = effectiveTarget(ex, weekIdx, option);
+  const { weight: planW, isDeload } = planWeight(ex, weekIdx, logs, week, option);
   const reps = log?.reps || Array(nSets).fill(null);
   const doneSets = reps.filter((r) => r != null).length;
   const complete = doneSets >= nSets;
 
-  const update = (patch) => onLog({ weight: log?.weight ?? "", reps, rir: log?.rir ?? null, note: log?.note ?? "", ...patch });
+  const update = (patch) => onLog({ weight: log?.weight ?? "", reps, rir: log?.rir ?? null, note: log?.note ?? "", option, ...patch });
 
   const prevReps = prev && (prev.log.reps || []).filter((r) => r != null);
+  const activeNote = option === "push" && ex.pushOption?.note ? ex.pushOption.note : ex.note;
 
   return (
-    <div style={{ background: C.surface, borderRadius: 12, borderLeft: `4px solid ${SS_COLORS[ex.ss]}`, overflow: "hidden" }}>
+    <div style={{ background: C.surface, borderRadius: 12, borderLeft: `4px solid ${SS_COLORS[ex.ss]}`, overflow: "hidden", ...(ex.bonus ? { opacity: 0.7 } : {}) }}>
       <div onClick={() => setOpen(!open)} style={{ padding: "12px 14px", display: "flex", alignItems: "center", gap: 10, cursor: "pointer" }}>
         <div style={{ flex: 1, minWidth: 0 }}>
-          <div style={{ fontSize: 15, fontWeight: 700, lineHeight: 1.25 }}>{name}</div>
+          <div style={{ fontSize: 15, fontWeight: 700, lineHeight: 1.25, display: "flex", alignItems: "center", gap: 6 }}>
+            {name}
+            {ex.bonus && <span style={{ fontSize: 10, fontWeight: 800, color: C.amber, background: C.surface2, padding: "1px 5px", borderRadius: 4, flexShrink: 0 }}>BONUS</span>}
+          </div>
           <div style={{ fontSize: 12.5, color: C.muted, marginTop: 2 }}>
-            {nSets} × {ex.target} · plan {start}
+            {nSets} × {target} · plan {planW}
+            {isDeload && <span style={{ color: C.amber }}> (deload −10%)</span>}
             {log?.weight ? <span style={{ color: C.amber, fontWeight: 700 }}> · did {log.weight}kg</span> : null}
           </div>
+          {ex.zone && <div style={{ fontSize: 11.5, color: C.muted, marginTop: 1 }}>{ex.zone}</div>}
           {prev && (
             <div style={{ fontSize: 12.5, color: C.green, marginTop: 2, fontVariantNumeric: "tabular-nums" }}>
               Last (W{prev.week}): <span style={{ fontWeight: 800 }}>{prev.log.weight || "?"}kg</span>
@@ -283,12 +350,26 @@ function ExerciseCard({ ex, weekIdx, log, prev, onLog }) {
 
       {open && (
         <div style={{ padding: "0 14px 14px", display: "flex", flexDirection: "column", gap: 12 }}>
+          {ex.pushOption && (
+            <div style={{ display: "flex", gap: 6 }}>
+              {["standard", "push"].map((opt) => (
+                <button key={opt} onClick={() => update({ option: opt })}
+                  style={{
+                    flex: 1, padding: "8px 0", borderRadius: 8, fontSize: 13, fontWeight: 700,
+                    border: `1px solid ${option === opt ? C.amber : C.line}`,
+                    background: option === opt ? C.amber : C.surface2,
+                    color: option === opt ? "#151A21" : C.text,
+                  }}>{opt === "standard" ? "Standard" : "Push"}</button>
+              ))}
+            </div>
+          )}
+
           <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
             <span style={{ fontSize: 13, color: C.muted, width: 52 }}>Weight</span>
             <input
               value={log?.weight ?? ""}
               onChange={(e) => update({ weight: e.target.value })}
-              placeholder={prev ? prev.log.weight || start : start}
+              placeholder={isDeload ? planW : (prev ? prev.log.weight || planW : planW)}
               inputMode="decimal"
               style={{ flex: 1, background: C.surface2, border: `1px solid ${C.line}`, borderRadius: 8, padding: "9px 10px", color: C.text, fontSize: 16, fontWeight: 700 }}
             />
@@ -324,7 +405,7 @@ function ExerciseCard({ ex, weekIdx, log, prev, onLog }) {
             placeholder="Notes — how it felt, subs, form cues…"
             style={{ background: C.surface2, border: `1px solid ${C.line}`, borderRadius: 8, padding: "9px 10px", color: C.text, fontSize: 14 }}
           />
-          {ex.note && <div style={{ fontSize: 12, color: C.muted }}>{ex.note}</div>}
+          {activeNote && <div style={{ fontSize: 12, color: C.muted }}>{activeNote}</div>}
         </div>
       )}
     </div>
@@ -349,7 +430,7 @@ function exportData(state) {
   const a = document.createElement("a");
   const date = new Date().toISOString().slice(0, 10);
   a.href = url;
-  a.download = `block1-backup-${date}.json`;
+  a.download = `block2-backup-${date}.json`;
   document.body.appendChild(a);
   a.click();
   document.body.removeChild(a);
@@ -363,7 +444,7 @@ function readFileAsJSON(file) {
       try {
         resolve(JSON.parse(reader.result));
       } catch {
-        reject(new Error("File isn't valid JSON — are you sure this is a Block 1 backup?"));
+        reject(new Error("File isn't valid JSON — are you sure this is a Block 2 backup?"));
       }
     };
     reader.onerror = () => reject(new Error("Couldn't read the file."));
@@ -376,9 +457,9 @@ function readFileAsJSON(file) {
 /* ------------------------------------------------------------------ */
 
 export default function App() {
-  const [state, setState] = useState(null); // { logs, sessionNotes, chat }
+  const [state, setState] = useState(null);
   const [week, setWeek] = useState(1);
-  const [session, setSession] = useState(null); // "A".."S" or null = overview
+  const [session, setSession] = useState(null);
   const [chatOpen, setChatOpen] = useState(false);
   const [chatInput, setChatInput] = useState("");
   const [thinking, setThinking] = useState(false);
@@ -393,7 +474,6 @@ export default function App() {
   const chatEndRef = useRef(null);
   const fileInputRef = useRef(null);
 
-  // Track online/offline for coach button state
   useEffect(() => {
     const goOnline = () => setIsOnline(true);
     const goOffline = () => setIsOnline(false);
@@ -409,18 +489,16 @@ export default function App() {
     (async () => {
       try {
         const r = await storage.get(STORAGE_KEY);
-        const loaded = r ? JSON.parse(r.value) : SEED;
+        const loaded = r ? JSON.parse(r.value) : EMPTY_STATE;
         stateRef.current = loaded;
         setState(loaded);
       } catch {
-        stateRef.current = SEED;
-        setState(SEED);
+        stateRef.current = EMPTY_STATE;
+        setState(EMPTY_STATE);
       }
     })();
   }, []);
 
-  /* Accepts a value OR an updater function — always applied against the
-     latest state, so a slow coach reply can't overwrite gym edits. */
   const persist = useCallback((updater) => {
     setState((prev) => {
       const next = typeof updater === "function" ? updater(prev) : updater;
@@ -449,11 +527,14 @@ export default function App() {
 
   const weekIdx = week - 1;
 
-  /* Most recent earlier week with real data for this exercise */
-  const prevFor = (exId) => {
+  const prevFor = (ex, option) => {
+    const currentName = exName(ex, weekIdx);
     for (let w = week - 1; w >= 1; w--) {
-      const l = state.logs[`${w}-${exId}`];
-      if (l && (l.weight || (l.reps || []).some((r) => r != null))) return { week: w, log: l };
+      if (ex.nameByWeek && exName(ex, w - 1) !== currentName) continue;
+      const l = state.logs[`${w}-${ex.id}`];
+      if (!l || (!l.weight && !(l.reps || []).some((r) => r != null))) continue;
+      if (ex.pushOption && (l.option || "standard") !== (option || "standard")) continue;
+      return { week: w, log: l };
     }
     return null;
   };
@@ -462,7 +543,6 @@ export default function App() {
     const msg = text.trim();
     if (!msg || thinking) return;
 
-    // Prompt for app key if missing
     if (!getAppKey()) {
       const key = prompt("Enter your app key to use the coach:");
       if (!key) return;
@@ -484,7 +564,7 @@ export default function App() {
       } else if (e.message === "no-app-key") {
         errorMsg = "No app key set. Open Settings at the bottom and enter your app key.";
       } else {
-        errorMsg = `Couldn't reach the coach (${e.message}). The backend isn't deployed yet — this will work after Phase 2.`;
+        errorMsg = `Couldn't reach the coach (${e.message}).`;
       }
       persist((s) => ({ ...s, chat: [...s.chat, { role: "assistant", content: errorMsg }] }));
     } finally {
@@ -497,9 +577,12 @@ export default function App() {
     if (!file) return;
     try {
       const data = await readFileAsJSON(file);
-      // Basic shape check
       if (!data.logs || !data.sessionNotes) {
-        setImportMsg("This doesn't look like a Block 1 backup (missing logs or sessionNotes).");
+        setImportMsg("This doesn't look like a valid backup (missing logs or sessionNotes).");
+        return;
+      }
+      if (data.block !== 2) {
+        setImportMsg("This looks like a Block 1 backup — Block 2 needs a file with block: 2.");
         return;
       }
       if (!window.confirm("This will replace all your current data with the backup. Continue?")) {
@@ -511,7 +594,6 @@ export default function App() {
     } catch (err) {
       setImportMsg(err.message);
     }
-    // Reset file input so the same file can be picked again
     e.target.value = "";
     setTimeout(() => setImportMsg(""), 4000);
   };
@@ -520,6 +602,7 @@ export default function App() {
     const sess = SESSIONS[sk];
     let done = 0, total = 0;
     sess.exercises.forEach((ex) => {
+      if (ex.bonus) return;
       const n = ex.sets[w - 1];
       total += n;
       const l = state.logs[`${w}-${ex.id}`];
@@ -552,6 +635,7 @@ export default function App() {
         setSaveStatus("Save failed — will retry on next edit");
       }
     };
+    const showWarmUp = ["A", "B", "C", "D"].includes(session);
     return (
       <div style={{ padding: "0 14px", display: "flex", flexDirection: "column", gap: 10 }}>
         <button onClick={() => setSession(null)} style={{ alignSelf: "flex-start", background: "none", border: "none", color: C.amber, fontSize: 14, fontWeight: 700, padding: "8px 0", cursor: "pointer" }}>
@@ -560,19 +644,25 @@ export default function App() {
         <div>
           <div style={{ fontSize: 26, fontWeight: 900, letterSpacing: -0.5 }}>{sess.name}</div>
           <div style={{ fontSize: 13.5, color: C.muted, marginTop: 2 }}>
-            {sess.time} · {sess.focus}{week === 4 ? " · DELOAD — one set fewer, same weights" : ""}
+            {sess.time} · {sess.focus}{week === 4 ? " · DELOAD — same sets, ~10% less weight" : ""}
           </div>
         </div>
-        {sess.exercises.map((ex) => (
-          <ExerciseCard
-            key={ex.id}
-            ex={ex}
-            weekIdx={weekIdx}
-            log={state.logs[`${week}-${ex.id}`]}
-            prev={prevFor(ex.id)}
-            onLog={(l) => persist((s) => ({ ...s, logs: { ...s.logs, [`${week}-${ex.id}`]: l } }))}
-          />
-        ))}
+        {showWarmUp && <WarmUpCard />}
+        {sess.exercises.map((ex) => {
+          const option = state.logs[`${week}-${ex.id}`]?.option || "standard";
+          return (
+            <ExerciseCard
+              key={ex.id}
+              ex={ex}
+              weekIdx={weekIdx}
+              log={state.logs[`${week}-${ex.id}`]}
+              prev={prevFor(ex, option)}
+              onLog={(l) => persist((s) => ({ ...s, logs: { ...s.logs, [`${week}-${ex.id}`]: l } }))}
+              week={week}
+              logs={state.logs}
+            />
+          );
+        })}
 
         <div style={{ background: C.surface, borderRadius: 12, padding: 14, display: "flex", flexDirection: "column", gap: 10, marginTop: 4 }}>
           <div style={{ fontSize: 14, fontWeight: 800 }}>How did it feel?</div>
@@ -617,27 +707,30 @@ export default function App() {
           </div>
         ))}
       </div>
-      {week === 4 && <div style={{ fontSize: 13, color: C.amber, fontWeight: 700 }}>Deload week — same weights, one set fewer on everything.</div>}
+      {week === 4 && <div style={{ fontSize: 13, color: C.amber, fontWeight: 700 }}>Deload week — same sets, ~10% less weight, 3–4 RIR.</div>}
       {SESSION_ORDER.map((sk) => {
         const sess = SESSIONS[sk];
         const { done, total } = sessionProgress(week, sk);
         const started = done > 0;
         const complete = done >= total;
         return (
-          <div key={sk} onClick={() => setSession(sk)}
-            style={{ background: C.surface, borderRadius: 12, padding: "14px 16px", display: "flex", alignItems: "center", gap: 12, cursor: "pointer" }}>
-            <div style={{
-              width: 44, height: 44, borderRadius: 10, background: complete ? C.green : started ? C.amber : C.surface2,
-              color: complete || started ? "#151A21" : C.muted,
-              display: "flex", alignItems: "center", justifyContent: "center", fontSize: 18, fontWeight: 900, flexShrink: 0,
-            }}>{sk === "S" ? "~" : sk}</div>
-            <div style={{ flex: 1 }}>
-              <div style={{ fontSize: 15.5, fontWeight: 800 }}>{sess.name}</div>
-              <div style={{ fontSize: 12.5, color: C.muted, marginTop: 1 }}>{DAY_LABEL[sk]} · {sess.time} · {sess.focus}</div>
+          <div key={sk}>
+            <div onClick={() => setSession(sk)}
+              style={{ background: C.surface, borderRadius: 12, padding: "14px 16px", display: "flex", alignItems: "center", gap: 12, cursor: "pointer" }}>
+              <div style={{
+                width: 44, height: 44, borderRadius: 10, background: complete ? C.green : started ? C.amber : C.surface2,
+                color: complete || started ? "#151A21" : C.muted,
+                display: "flex", alignItems: "center", justifyContent: "center", fontSize: 18, fontWeight: 900, flexShrink: 0,
+              }}>{sk === "S" ? "~" : sk}</div>
+              <div style={{ flex: 1 }}>
+                <div style={{ fontSize: 15.5, fontWeight: 800 }}>{sess.name}</div>
+                <div style={{ fontSize: 12.5, color: C.muted, marginTop: 1 }}>{DAY_LABEL[sk]} · {sess.time} · {sess.focus}</div>
+              </div>
+              <div style={{ fontSize: 13, fontWeight: 800, color: complete ? C.green : started ? C.amber : C.muted, fontVariantNumeric: "tabular-nums" }}>
+                {complete ? "Done" : started ? `${done}/${total}` : ""}
+              </div>
             </div>
-            <div style={{ fontSize: 13, fontWeight: 800, color: complete ? C.green : started ? C.amber : C.muted, fontVariantNumeric: "tabular-nums" }}>
-              {complete ? "Done" : started ? `${done}/${total}` : ""}
-            </div>
+            {sk === "D" && <div style={{ fontSize: 12, color: C.muted, marginTop: 4, marginLeft: 58 }}>Optional — drop this first if the week is busy.</div>}
           </div>
         );
       })}
@@ -714,7 +807,6 @@ export default function App() {
       </button>
       {settingsOpen && (
         <div style={{ background: C.surface, borderRadius: 12, padding: 14, display: "flex", flexDirection: "column", gap: 12, marginTop: 4 }}>
-          {/* App key */}
           <div>
             <div style={{ fontSize: 13, fontWeight: 700, color: C.text, marginBottom: 6 }}>Coach app key</div>
             <div style={{ display: "flex", gap: 8 }}>
@@ -732,7 +824,6 @@ export default function App() {
             </div>
           </div>
 
-          {/* Export / Import */}
           <div>
             <div style={{ fontSize: 13, fontWeight: 700, color: C.text, marginBottom: 6 }}>Data backup</div>
             <div style={{ display: "flex", gap: 8 }}>
@@ -757,7 +848,7 @@ export default function App() {
     <div style={{ background: C.bg, minHeight: "100vh" }}>
       <div style={page}>
         <div style={{ padding: "18px 14px 12px", display: "flex", alignItems: "baseline", gap: 8 }}>
-          <div style={{ fontSize: 20, fontWeight: 900, letterSpacing: -0.4 }}>Block 1</div>
+          <div style={{ fontSize: 20, fontWeight: 900, letterSpacing: -0.4 }}>Block 2</div>
           <div style={{ fontSize: 13, color: C.muted }}>Hypertrophy · 4 weeks</div>
           <div style={{ marginLeft: "auto", fontSize: 12, color: saveStatus.startsWith("Save failed") ? "#E0526B" : C.green, fontWeight: 700 }}>{saveStatus}</div>
         </div>
@@ -765,7 +856,6 @@ export default function App() {
         {!session && renderSettings()}
       </div>
 
-      {/* Coach FAB — shows offline state when no network */}
       <button onClick={() => isOnline ? setChatOpen(true) : null}
         style={{
           position: "fixed", bottom: 18, right: "max(18px, calc(50% - 212px))", zIndex: 30,
